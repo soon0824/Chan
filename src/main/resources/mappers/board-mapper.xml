@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Board">
+  <resultMap type="Board" id="resultBoard">
+  	<id column="BOARDNO" property="boardNo"/>
+ 	<result column="BOARDTITLE" property="boardTitle"/>
+ 	<result column="BOARDCONTENT" property="boardContent"/>
+ 	<result column="BOARDDATE" property="boardDate"/>
+ 	<result column="BOARDCNT" property="boardCnt"/>
+ 	<result column="BOARDID" property="boardId"/>
+ 	<result column="" property="boardLike"/>
+ 	<result column="" property="cmt"/> 	
+ 	
+  </resultMap>
+  
+  	<!-- 게시판리스트 -->
+  	<select id="listCount" resultType="int">
+  		SELECT count(*) FROM BOARD
+  	</select>
+   	 
+   	<!-- 페이징 처리 -->	
+   	<select id="selectList" resultMap="resultBoard" resultType="Board">
+		SELECT * FROM BOARD ORDER BY BOARDNO DESC 	
+	</select>
+   	 
+  	<!-- 게시판 글쓰기 -->
+  	<insert id="insertBoard" parameterType="Board">
+  		INSERT INTO BOARD (BOARDNO, BOARDTITLE, BOARDCONTENT, BOARDDATE, BOARDCNT, BOARDID)
+		VALUES(SEQ_BOARD.NEXTVAL,#{boardTitle}, #{boardContent}, SYSDATE, 0, #{boardId})
+  	</insert>	
+	
+	<!-- 게시글 상세보기 -->
+	<select id="detail" resultType="Board">
+		SELECT * FROM BOARD WHERE BOARDNO = #{boardNo}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="addReadCount" parameterType="int" statementType="PREPARED">
+		UPDATE BOARD SET BOARDCNT = BOARDCNT +1 WHERE BOARDNO = #{boardNo}
+	</update>
+	
+	<!-- 게시글 단일 조회 -->
+	<select id="selectOne" parameterType="int" resultMap="resultBoard">
+		SELECT * FROM BOARD WHERE BOARDNO = #{boardNo}
+	</select>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM BOARD WHERE BOARDNO = #{boardNo}
+	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType="Board" flushCache="true" statementType="PREPARED">
+		UPDATE BOARD SET BOARDTITLE = #{boardTitle} , BOARDCONTENT =#{boardContent} WHERE BOARDNO = #{boardNo}
+	</update>
+	
+</mapper>
