@@ -63,14 +63,14 @@
 			</c:forEach>
 			
 		<!-- 앞 페이지 번호 처리 -->
-	<%-- 	<tr align="center" height="20">
-			<td colspan="5"><c:if test="${currentPage <= 1}"> < </c:if>
-				<c:if test="${currentPage > 1}">
-					<c:url var="blistST" value="list">
-						<c:param name="page" value="${currentPage-1}" />
-					</c:url>
+	 		<tr align="center" height="20">
+				<td colspan="5"><c:if test="${currentPage <= 1}"> < </c:if>
+					<c:if test="${currentPage > 1}">
+						<c:url var="blistST" value="list">
+							<c:param name="page" value="${currentPage-1}" />
+						</c:url>
 					<a href="${blistST}"> < </a>
-				</c:if> <!-- 끝 페이지 번호 처리 --> <c:set var="endPage" value="${maxPage}" /> 
+					</c:if> <!-- 끝 페이지 번호 처리 --> <c:set var="endPage" value="${maxPage}" /> 
 				<c:forEach var="p" begin="${startPage+1}" end="${endPage}">
 					<c:if test="${p eq currentPage}">
 						<font color="red" size="4"><b>${p}</b></font>
@@ -83,13 +83,13 @@
 					</c:if>
 				</c:forEach> 
 				<c:if test="${currentPage >= maxPage}"> > </c:if> 
-				<c:if test="${currentPage < maxPage}">
-					<c:url var="blistEND" value="list">
-						<c:param name="page" value="${currentPage+1}" />
-					</c:url>
+					<c:if test="${currentPage < maxPage}">
+						<c:url var="blistEND" value="list">
+							<c:param name="page" value="${currentPage+1}" />
+						</c:url>
 					<a href="${blistEND}"> > </a>
 				</c:if></td>
-			</tr> --%>
+			</tr>
 		</table>
 	</div>
 </body>
