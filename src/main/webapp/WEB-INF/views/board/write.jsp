@@ -20,7 +20,7 @@
 	margin-left: 400px;
 }
 .button{
-	margin-left: 1400px;
+	margin-left: 1330px;
 }
 </style>
 
@@ -53,7 +53,8 @@
 </body>
 
 <script type="text/javascript">
-		var oEditors=[]; // 스마트에디터
+		//스마트에디터
+		var oEditors=[]; 
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef:oEditors,
 			elPlaceHolder:"ir1",

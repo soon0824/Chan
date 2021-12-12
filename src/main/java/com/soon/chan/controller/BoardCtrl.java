@@ -105,9 +105,12 @@ public class BoardCtrl {
 		return "board/update";
 	}
 	
+	// 게시글 수정
 	@RequestMapping(value = "update2", method = RequestMethod.POST)
 	public String update2(Board b) { // 게시글 수정
 		BoardService.updateBoard(b);
 		return "redirect:list";
 	}
+	
+	
 }

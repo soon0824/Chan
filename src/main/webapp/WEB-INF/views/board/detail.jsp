@@ -32,7 +32,7 @@
 .page{
 	float: right;
 	margin-top: 100px;
-	margin-right: 200px;
+	margin-right: 270px;
 }
 </style>
 <body>
