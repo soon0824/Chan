@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.soon.chan.service.BoardService;
@@ -112,5 +113,26 @@ public class BoardCtrl {
 		return "redirect:list";
 	}
 	
+	// 추천 ajax
+	@RequestMapping(value = "clickLike", method = RequestMethod.POST)
+	@ResponseBody
+	public int clickLike(@RequestParam("boardNo") int boardNo, @RequestParam("boardId") String boardId, ModelAndView mv) {
+		int result = -1;
+		int likecnt = 0;
+		
+		try {
+			result = BoardService.checklike(boardNo, boardId); // 게시글 추천 여부검사
+			if(result == 0) { // 게시글 추천
+				BoardService.insertLike(boardNo, boardId);
+			} else if(result == 1) { // 게시글 추천 취소
+				BoardService.deleteLike(boardNo, boardId);
+			} else {
+			}
+			likecnt = BoardService.likecnt(boardNo); // 총추천수
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return likecnt;
+	}
 	
 }

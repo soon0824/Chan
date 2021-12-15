@@ -54,4 +54,24 @@
 		UPDATE BOARD SET BOARDTITLE = #{boardTitle} , BOARDCONTENT =#{boardContent} WHERE BOARDNO = #{boardNo}
 	</update>
 	
+	<!-- 추천 여부 검사 -->
+	<select id="checklike" parameterType="hashmap" flushCache="true" statementType="PREPARED" resultType="int">
+		SELECT count(*) FROM BOARDLIKE WHERE BOARDNO = #{boardNo} and ID = #{boardId}
+	</select>
+	
+	<!-- 추천 -->
+	<insert id="insertlike" parameterType="hashmap" flushCache="true" statementType="PREPARED" >
+		INSERT INTO BOARDLIKE VALUES(#{boardNo}, #{boardId})
+	</insert>
+	
+	<!-- 추천 취소 -->
+	<delete id="deletelike" parameterType="hashmap" flushCache="true" statementType="PREPARED">
+		DELETE FROM BOARDLIKE WHERE BOARDNO = #{boardNo} and ID = #{boardId}
+	</delete>
+	
+	<!-- 추천수 -->
+	<select id="likecnt" parameterType="int" flushCache="true" statementType="PREPARED" resultType="int">
+		SELECT count(*) FROM BOARDLIKE WHERE BOARDNO = #{boardNo}
+	</select>
+	
 </mapper>

@@ -11,7 +11,7 @@ public class Board {
 	private String boardId; // 작성자
 	private int boardCnt; // 조회수
 	private int boardLike; // 추천수
-	private int cmt; // 리스트에 보일 댓글 수
+	private int comment; // 리스트에 보일 댓글 수
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -55,11 +55,11 @@ public class Board {
 	public void setBoardLike(int boardLike) {
 		this.boardLike = boardLike;
 	}
-	public int getCmt() {
-		return cmt;
+	public int getComment() {
+		return comment;
 	}
-	public void setCmt(int cmt) {
-		this.cmt = cmt;
+	public void setComment(int comment) {
+		this.comment = comment;
 	}
-	
+
 }

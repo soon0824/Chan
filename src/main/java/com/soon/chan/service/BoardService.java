@@ -18,5 +18,15 @@ public interface BoardService {
 	void delete(int boardNo); // 게시글 삭제
 
 	void updateBoard(Board b); // 게시글 수정
+
+	int checklike(int boardNo, String boardId); // 게시글 추천 여부 검사
+
+	int insertLike(int boardNo, String boardId); // 게시글 추천수
+
+	int deleteLike(int boardNo, String boardId); // 게시글 추천 취소
+
+	int likecnt(int boardNo); // 총 추천수
+
+
 	
 }

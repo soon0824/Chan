@@ -1,6 +1,8 @@
 package com.soon.chan.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -55,6 +57,35 @@ public class BoardDao {
 	// 게시글 수정
 	public Object update(Board b) {
 		return SqlSession.update("Board.update", b);
+	}
+
+	// 게시글 추천 여부 검사
+	public int checklike(int boardNo, String boardId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("BOARDNO", boardNo);
+		map.put("ID", boardId);
+		return SqlSession.selectOne("Board.checklike", map);
+	}
+
+	// 게시글 추천
+	public int insertLike(int boardNo, String boardId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("BOARDNO", boardNo);
+		map.put("ID", boardId);
+		return SqlSession.insert("Board.insertlike", map);
+	}
+
+	// 게시글 추천 취소
+	public int deleteLike(int boardNo, String boardId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("BOARDNO", boardNo);
+		map.put("ID", boardId);
+		return SqlSession.delete("Board.deletelike", map);
+	}
+
+	// 총 추천수
+	public int likecnt(int boardNo) {
+		return SqlSession.selectOne("Board.likecnt", boardNo);
 	}
 
 

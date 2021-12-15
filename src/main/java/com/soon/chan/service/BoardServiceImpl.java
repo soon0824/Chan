@@ -66,4 +66,34 @@ public class BoardServiceImpl implements BoardService{
 		BoardDao.update(b);
 	}
 	
+	// 게시글 추천 여부 검사
+	@Override
+	public int checklike(int boardNo, String boardId) {
+
+		int result = BoardDao.checklike(boardNo, boardId);
+		
+		if(result == 0) {
+		} else {
+		}
+		return result;
+	}
+
+	// 게시글 추천
+	@Override
+	public int insertLike(int boardNo, String boardId) {
+		return BoardDao.insertLike(boardNo, boardId);
+	}
+
+	// 게시글 추천 취소
+	@Override
+	public int deleteLike(int boardNo, String boardId) {
+		return BoardDao.deleteLike(boardNo, boardId);
+	}
+
+	// 총 추천수
+	@Override
+	public int likecnt(int boardNo) {
+		return BoardDao.likecnt(boardNo);
+	}
+
 }
