@@ -56,8 +56,8 @@
 					<td align="center">${chan.boardNo }</td>
 					<td align="center"><a href="detail?boardNo=${chan.boardNo}&page=${currentPage}">${chan.boardTitle }</a></td>
 					<td align="center">${chan.boardId }</td>
-					<td align="center">${chan.boardCnt }</td>
-					<td align="center"></td>
+					<td align="center">${chan.boardViews }</td>
+					<td align="center">${chan.boardLike }</td>
 					<td align="center">${chan.boardDate }</td>
 				</tr>
 			</c:forEach>

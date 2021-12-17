@@ -13,7 +13,7 @@ public interface BoardService {
 
 	Board detail(int boardNo); // 게시글 상세보기
 
-	Board boardCnt(int i, int boardNo); // 조회수
+	Board boardViews(int i, int boardNo); // 조회수
 
 	void delete(int boardNo); // 게시글 삭제
 

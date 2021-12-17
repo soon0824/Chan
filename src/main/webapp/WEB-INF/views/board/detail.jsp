@@ -70,7 +70,7 @@
 		</div>
 		
 		<div class="id">
-			작성자 : ${b.boardId } 조회수 : ${b.boardCnt }
+			작성자 : ${b.boardId } 조회수 : ${b.boardViews }
 		</div>
 		
 		<hr width="70%">

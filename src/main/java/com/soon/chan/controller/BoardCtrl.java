@@ -82,8 +82,8 @@ public class BoardCtrl {
 	// 게시판 상세보기
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(@RequestParam(name = "boardNo") int boardNo, Model model) {
-		Board boardCnt = BoardService.boardCnt(0, boardNo);
-		model.addAttribute("boardCnt", boardCnt);
+		Board boardViews = BoardService.boardViews(0, boardNo);
+		model.addAttribute("boardViews", boardViews);
 		
 		Board b = BoardService.detail(boardNo);
 		model.addAttribute("b", b);

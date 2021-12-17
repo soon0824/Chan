@@ -9,7 +9,7 @@ public class Board {
 	private String boardContent; // 글내용
 	private Date boardDate;// 글 작성일
 	private String boardId; // 작성자
-	private int boardCnt; // 조회수
+	private int boardViews; // 조회수
 	private int boardLike; // 추천수
 	private int comment; // 리스트에 보일 댓글 수
 	
@@ -43,11 +43,11 @@ public class Board {
 	public void setBoardId(String boardId) {
 		this.boardId = boardId;
 	}
-	public int getBoardCnt() {
-		return boardCnt;
+	public int getBoardViews() {
+		return boardViews;
 	}
-	public void setBoardCnt(int boardCnt) {
-		this.boardCnt = boardCnt;
+	public void setBoardViews(int boardViews) {
+		this.boardViews = boardViews;
 	}
 	public int getBoardLike() {
 		return boardLike;
@@ -61,5 +61,7 @@ public class Board {
 	public void setComment(int comment) {
 		this.comment = comment;
 	}
+	
+
 
 }

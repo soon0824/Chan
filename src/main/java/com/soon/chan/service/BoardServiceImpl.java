@@ -46,7 +46,7 @@ public class BoardServiceImpl implements BoardService{
 
 	// 조회수
 	@Override
-	public Board boardCnt(int i, int boardNo) {
+	public Board boardViews(int i, int boardNo) {
 		
 		if(i == 0) {
 			BoardDao.addReadCount(boardNo);

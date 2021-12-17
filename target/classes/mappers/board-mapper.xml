@@ -6,9 +6,9 @@
  	<result column="BOARDTITLE" property="boardTitle"/>
  	<result column="BOARDCONTENT" property="boardContent"/>
  	<result column="BOARDDATE" property="boardDate"/>
- 	<result column="BOARDCNT" property="boardCnt"/>
+ 	<result column="boardViews" property="boardViews"/>
  	<result column="BOARDID" property="boardId"/>
- 	<result column="" property="boardLike"/>
+ 	<result column="BOARDLIKE" property="boardLike"/>
  	<result column="" property="cmt"/> 	
  	
   </resultMap>
@@ -20,12 +20,16 @@
    	 
    	<!-- 페이징 처리 -->	
    	<select id="selectList" resultMap="resultBoard" resultType="Board">
-		SELECT * FROM BOARD ORDER BY BOARDNO DESC 	
+		SELECT B.*, C.BOARDLIKE
+		FROM BOARD B
+		LEFT OUTER JOIN(SELECT count(*) AS BOARDLIKE, BOARDNO FROM BOARDLIKE group by BOARDNO) C
+		ON B.BOARDNO = C.BOARDNO
+		ORDER BY B.BOARDNO DESC	
 	</select>
    	 
   	<!-- 게시판 글쓰기 -->
   	<insert id="insertBoard" parameterType="Board">
-  		INSERT INTO BOARD (BOARDNO, BOARDTITLE, BOARDCONTENT, BOARDDATE, BOARDCNT, BOARDID)
+  		INSERT INTO BOARD (BOARDNO, BOARDTITLE, BOARDCONTENT, BOARDDATE, BOARDVIEWS, BOARDID)
 		VALUES(SEQ_BOARD.NEXTVAL,#{boardTitle}, #{boardContent}, SYSDATE, 0, #{boardId})
   	</insert>	
 	
@@ -36,7 +40,7 @@
 	
 	<!-- 조회수 증가 -->
 	<update id="addReadCount" parameterType="int" statementType="PREPARED">
-		UPDATE BOARD SET BOARDCNT = BOARDCNT +1 WHERE BOARDNO = #{boardNo}
+		UPDATE BOARD SET BOARDVIEWS = BOARDVIEWS +1 WHERE BOARDNO = #{boardNo}
 	</update>
 	
 	<!-- 게시글 단일 조회 -->
@@ -56,17 +60,17 @@
 	
 	<!-- 추천 여부 검사 -->
 	<select id="checklike" parameterType="hashmap" flushCache="true" statementType="PREPARED" resultType="int">
-		SELECT count(*) FROM BOARDLIKE WHERE BOARDNO = #{boardNo} and ID = #{boardId}
+		SELECT count(*) FROM BOARDLIKE WHERE BOARDNO = #{BOARDNO} and ID = #{ID}
 	</select>
 	
 	<!-- 추천 -->
 	<insert id="insertlike" parameterType="hashmap" flushCache="true" statementType="PREPARED" >
-		INSERT INTO BOARDLIKE VALUES(#{boardNo}, #{boardId})
+		INSERT INTO BOARDLIKE VALUES(#{BOARDNO}, #{ID})
 	</insert>
 	
 	<!-- 추천 취소 -->
 	<delete id="deletelike" parameterType="hashmap" flushCache="true" statementType="PREPARED">
-		DELETE FROM BOARDLIKE WHERE BOARDNO = #{boardNo} and ID = #{boardId}
+		DELETE FROM BOARDLIKE WHERE BOARDNO = #{BOARDNO} and ID = #{ID}
 	</delete>
 	
 	<!-- 추천수 -->
