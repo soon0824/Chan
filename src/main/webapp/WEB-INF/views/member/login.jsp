@@ -8,10 +8,20 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<style>
+.login{
+	margin-left: 700px;
+	margin-top: 200px;
+}
+.login2{
+	margin-left: 700px;
+}
+</style>
+
+
 <script>	
-	$(function(){
+	$(function(){	
 		$("#btnlogin").on("click", function(){
-	
 			var frmData = $("#frmlogin").serialize(); // 직렬화
 			console.log("로그인 ajax시작");
 			$.ajax({
@@ -24,33 +34,23 @@
 				error	: function(data){
 					console.log(data);
 				}
-			})
+			}) 
 		});
 	});
 </script>
 
 <body>
-	<h1>로그인</h1>
-	
+	<h1 class="login">로그인</h1>
 	
 	<form id="frmlogin">
-		<div>
-			<input type="text" name="userId" placeholder="아이디">
-		</div>
-		
-		<div>
-			<input type="password" name="userPwd" placeholder="비밀번호">
-		</div>
-		
-		<div>
-			<button type="button" id="btnlogin">로그인</button>
-		</div>
-		
+	<div class=login2>
+		<div><input type="text" name="userId" placeholder="아이디" style="width:200px; height:30px;"></div>
 		<br>
-		
-		<div>
-			<a href="<%=request.getContextPath() %>/member/join">회원가입</a>
-		</div>
+		<div><input type="password" name="userPwd" placeholder="비밀번호" style="width:200px; height:30px;"></div>
+		<br>
+		<div><button type="button" id="btnlogin">로그인</button>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="<%=request.getContextPath() %>/member/join">회원가입</a></div>
+	</div>	
 	</form>	
 </body>	
 </html>

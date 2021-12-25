@@ -31,6 +31,7 @@
 	
 	<div class="members">
 	<p>${member.userName }(${member.userId }) 님 환영합니다.</p>
+	<a href="<%=request.getContextPath()%>/member/login">로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="<%=request.getContextPath()%>/member/logout">로그아웃</a> 
 	</div>
 		

@@ -7,6 +7,16 @@
 <title>회원가입</title>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+.join{
+	margin-left: 700px;
+	margin-top: 200px;
+}
+.join2{
+	margin-left: 700px;
+}
+</style>
+
 <script>
 	$(function(){
 		$("#doJoin").on("click", function(){
@@ -29,32 +39,25 @@
 </script>
 
 <body>
-	<h1>회원가입</h1>
+	<h1 class="join">회원가입</h1>
 	<form id="frmJoin"> <!-- 아이디,비밀번호,이름,닉네임,전화번호 -->
-		<div>
-			<input type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요">
+		<div class="join2">
+			<div><input type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요" style="width:200px; height:30px;"></div>
+			<br>
+			<div><input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요" style="width:200px; height:30px;"></div>
+			<br>
+			<div><input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요" style="width:200px; height:30px;"></div>
+			<br>
+			<div><input type="text" id="userNickName" name="userNickName" placeholder="닉네임을 입력해주세요" style="width:200px; height:30px;"></div>
+			<br>
+			<div><input type="text" id="userPhone" name="userPhone" placeholder="전화번호를 입력해주세요" style="width:200px; height:30px;"></div>
+			<br>
+			<div>
+				<button type="button" id="doJoin">회원가입</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="reset" class="insideBtn" onclick="history.back(-1)">취소</button>
+			</div>
 		</div>
 		
-		<div>
-			<input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요">
-		</div>
-		
-		<div>
-			<input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요">
-		</div>
-		
-		<div>
-			<input type="text" id="userNickName" name="userNickName" placeholder="닉네임을 입력해주세요">
-		</div>
-		
-		<div>
-			<input type="text" id="userPhone" name="userPhone" placeholder="전화번호를 입력해주세요">
-		</div>
-		
-		<div>
-			<button type="button" id="doJoin">회원가입</button>
-			<button type="reset" class="insideBtn" onclick="history.back(-1)">취소</button>
-		</div>
 	</form>
 </body>
 </html>
