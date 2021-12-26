@@ -84,4 +84,16 @@ public class MemberCtrl {
 		
 		return "/member/login";
 	}
+	
+	// 아이디 찾기
+	@RequestMapping(value = "/findId")
+	public String findId() {
+		return "/member/findId";
+	}
+	
+	// 비밀번호 찾기
+	@RequestMapping(value = "/findPwd")
+	public String findPwd() {
+		return "/member/findPwd";
+	}
 }
