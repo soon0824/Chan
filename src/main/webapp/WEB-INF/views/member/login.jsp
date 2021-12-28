@@ -16,6 +16,9 @@
 .login2{
 	margin-left: 700px;
 }
+.btnLogin{
+	margin-left: 700px;
+}
 .findId{
 	margin-left: 700px;
 }
@@ -59,18 +62,18 @@
 	
 	<form id="frmlogin">
 	<div class=login2>
-		<div><input type="text" id="userId" name="userId" placeholder="아이디" style="width:200px; height:30px;"></div>
+		<div><input type="text" id="userId" name="userId" placeholder="아이디" style="width:250px; height:30px;"></div>
 		<br>
-		<div><input type="password" id="userPwd" name="userPwd" placeholder="비밀번호" style="width:200px; height:30px;"></div>
+		<div><input type="password" id="userPwd" name="userPwd" placeholder="비밀번호" style="width:250px; height:30px;"></div>
 		<br>
-		<div><button type="button" id="btnLogin">로그인</button>&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="<%=request.getContextPath() %>/member/join">회원가입</a></div>
 	</div>
-		<br>
 		<div class="findId">
 			<a href="<%=request.getContextPath() %>/member/findId">아이디찾기</a> 
 			<a href="<%=request.getContextPath() %>/member/findPwd">비밀번호찾기</a>
+			<a href="<%=request.getContextPath() %>/member/join">회원가입</a>
 		</div>
+		<br>
+		<div class="btnLogin"><button type="button" id="btnLogin">로그인</button></div>
 	</form>	
 </body>	
 </html>

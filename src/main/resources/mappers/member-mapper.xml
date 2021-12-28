@@ -20,4 +20,14 @@
 	  	SELECT * FROM MEMBER WHERE ID = #{userId} AND PWD = #{userPwd}
 	  </select>
 	  
+	  <!-- 아이디찾기 -->
+	  <select id="findId" parameterType="string" resultMap="resultMember">
+	  	SELECT ID FROM MEMBER WHERE NAME = #{userName} AND PHONE = #{userPhone}
+	  </select>
+	  
+	  <!-- 비밀번호찾기 -->
+	  <select id="findPwd" parameterType="string" resultMap="resultMember">
+	  	SELECT PWD FROM MEMBER WHERE ID = #{userId} AND PHONE = #{userPhone}
+	  </select>
+	  
 </mapper>

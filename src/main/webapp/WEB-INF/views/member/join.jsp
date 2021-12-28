@@ -42,15 +42,15 @@
 	<h1 class="join">회원가입</h1>
 	<form id="frmJoin"> <!-- 아이디,비밀번호,이름,닉네임,전화번호 -->
 		<div class="join2">
-			<div><input type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요" style="width:200px; height:30px;"></div>
+			<div><input type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요" style="width:250px; height:30px;"></div>
 			<br>
-			<div><input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요" style="width:200px; height:30px;"></div>
+			<div><input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요" style="width:250px; height:30px;"></div>
 			<br>
-			<div><input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요" style="width:200px; height:30px;"></div>
+			<div><input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요" style="width:250px; height:30px;"></div>
 			<br>
-			<div><input type="text" id="userNickName" name="userNickName" placeholder="닉네임을 입력해주세요" style="width:200px; height:30px;"></div>
+			<div><input type="text" id="userNickName" name="userNickName" placeholder="닉네임을 입력해주세요" style="width:250px; height:30px;"></div>
 			<br>
-			<div><input type="text" id="userPhone" name="userPhone" placeholder="전화번호를 입력해주세요" style="width:200px; height:30px;"></div>
+			<div><input type="text" id="userPhone" name="userPhone" placeholder="전화번호를 입력해주세요" style="width:250px; height:30px;"></div>
 			<br>
 			<div>
 				<button type="button" id="doJoin">회원가입</button>&nbsp;&nbsp;&nbsp;&nbsp;

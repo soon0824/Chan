@@ -21,4 +21,13 @@ public class MemberDao {
 	public Member login(Member member) {
 		return sqlSession.selectOne("Member.login", member);
 	}
+
+	// 아이디찾기
+	public Member findId(Member me) {
+		return sqlSession.selectOne("Member.findId", me);
+	}
+	// 비밀번호찾기
+	public Member findPwd(Member me) {
+		return sqlSession.selectOne("Member.findPwd", me);
+	}
 }

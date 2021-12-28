@@ -24,4 +24,16 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.login(member);
 	}
 
+	// 아이디찾기
+	@Override
+	public Member findId(Member me) {
+		return memberDao.findId(me);
+	}
+	
+	// 비밀번호찾기
+	@Override
+	public Member findPwd(Member me) {
+		return memberDao.findPwd(me);
+	}
+
 }

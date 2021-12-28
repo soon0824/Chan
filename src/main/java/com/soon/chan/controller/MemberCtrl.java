@@ -1,6 +1,7 @@
 package com.soon.chan.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -91,9 +94,39 @@ public class MemberCtrl {
 		return "/member/findId";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "chkId", method = RequestMethod.POST)
+	public HashMap<String, Object> chkId(@RequestParam String userName, @RequestParam String userPhone) throws Exception {
+		System.out.println("userName :" + userName + " " +"userPhone : " + userPhone);
+		Member me = new Member();
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		me.setUserName(userName);
+		me.setUserPhone(userPhone);
+		me = memberService.findId(me);
+		System.out.println(me);
+		
+		return result;
+	}
+	
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findPwd")
 	public String findPwd() {
 		return "/member/findPwd";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "chkPwd", method = RequestMethod.POST)
+	public HashMap<String, Object> chkPwd(@RequestParam String userId, @RequestParam String userPhone ) throws Exception {
+		System.out.println("userId :" + userId + " " +"userPhone : " + userPhone);
+		Member me = new Member();
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		me.setUserName(userId);
+		me.setUserPhone(userPhone);
+		me = memberService.findPwd(me);
+		System.out.println(me);
+		
+		return result;
 	}
 }
