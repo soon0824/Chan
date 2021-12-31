@@ -42,6 +42,7 @@
 				},
 				success	: function(data){
 					console.log("data : " + JSON.stringify(data));
+					alert(JSON.stringify(data));
 				},
 				error	: function(e){
 					alert(e);

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,7 +81,6 @@ public class MemberCtrl {
 	// 로그아웃
 	@RequestMapping(value = "/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
-		
 		// 세션 삭제
 		System.out.println("로그아웃");
 		session.removeAttribute("member");
@@ -96,17 +96,14 @@ public class MemberCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "chkId", method = RequestMethod.POST)
-	public HashMap<String, Object> chkId(@RequestParam String userName, @RequestParam String userPhone) throws Exception {
-		System.out.println("userName :" + userName + " " +"userPhone : " + userPhone);
+	public Member chkId(@RequestParam String userName, @RequestParam String userPhone) throws Exception {
 		Member me = new Member();
-		HashMap<String, Object> result = new HashMap<String, Object>();
 		
 		me.setUserName(userName);
 		me.setUserPhone(userPhone);
 		me = memberService.findId(me);
-		System.out.println(me);
 		
-		return result;
+		return me;
 	}
 	
 	// 비밀번호 찾기
@@ -117,16 +114,13 @@ public class MemberCtrl {
 	
 	@ResponseBody
 	@RequestMapping(value = "chkPwd", method = RequestMethod.POST)
-	public HashMap<String, Object> chkPwd(@RequestParam String userId, @RequestParam String userPhone ) throws Exception {
-		System.out.println("userId :" + userId + " " +"userPhone : " + userPhone);
+	public Member chkPwd(@RequestParam String userId, @RequestParam String userPhone ) throws Exception {
 		Member me = new Member();
-		HashMap<String, Object> result = new HashMap<String, Object>();
 		
-		me.setUserName(userId);
+		me.setUserId(userId);
 		me.setUserPhone(userPhone);
 		me = memberService.findPwd(me);
-		System.out.println(me);
-		
-		return result;
+
+		return me;
 	}
 }
